@@ -58,10 +58,10 @@ const NavBar: React.FC = () => {
       <>
         <InCart
           onClick={() => {
+            document.body.style.overflow = "hidden";
             setShowCart(true);
           }}
         >
-          {" "}
           Kosár ({getItemsQuantityInCart()})
         </InCart>
         <ScrolledNavBarContainer>

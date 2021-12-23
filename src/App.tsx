@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import "./App.css";
 import NavBar from "./components/NavBar/NavBar";
 import Hero from "./pages/hero/Hero";
@@ -9,26 +9,33 @@ import Cart from "./pages/cart/Cart";
 import { BackDrop } from "./utils/Common.style";
 import FullPageImage from "./components/FullPageImage/FullPageImage";
 
+import { CartDetailsContext as CartContext } from "./context/CartContext";
+
 function App() {
-  const [actualPage, setActualPage] = useState<
-    "hero" | "products" | "about" | "contact"
-  >("hero");
-  const [showCart, setShowCart] = useState<boolean>(false);
+  const { showCart, setShowCart, cart } = useContext(CartContext);
 
   useEffect(() => {
-    console.log("Actual page", actualPage);
-  }, [actualPage]);
+    console.log("cart", cart);
+  }, [cart]);
 
   return (
     <div className="App">
-      <NavBar actualPage={actualPage} setShowCart={setShowCart} />
-      <Hero setActualPage={setActualPage} />
-      <Products setActualPage={setActualPage} />
+      <NavBar />
+      <Hero />
+      <Products />
       <FullPageImage />
-      <About setActualPage={setActualPage} />
-      <Contact setActualPage={setActualPage} />
-      {showCart ? <BackDrop /> : null}
-      <Cart setShowCart={setShowCart} isVisible={showCart} />
+      <About />
+      <Contact />
+      {showCart ? (
+        <>
+          <BackDrop
+            onClick={() => {
+              setShowCart(false);
+            }}
+          />
+          <Cart />
+        </>
+      ) : null}
     </div>
   );
 }

@@ -42,21 +42,22 @@ export const ScrolledNavBarContainer = styled.ul`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  /* background-color: rgba(39, 53, 87, 0.9); */
   color: wheat;
   z-index: 99;
   img {
     margin: 12px;
   }
-  /* li {
-    all: unset;
-    font-size: 10px;
-    text-transform: uppercase;
-    cursor: pointer;
-    margin: 16px 0px;
+`;
 
-    &:hover {
-      color: white;
-    }
-  } */
+export const InCart = styled.div`
+  position: fixed;
+  top: 0px;
+  right: 0px;
+  color: wheat;
+  cursor: pointer;
+  text-transform: uppercase;
+  font-weight: bold;
+  background-color: black;
+  padding: 16px;
+  width: 125px;
 `;

@@ -1,19 +1,14 @@
-import { useRef, SetStateAction } from "react";
+import { useRef, useContext } from "react";
 import { CartContainer, ClosButton } from "./Cart.style";
 import { SectionTitle } from "../../utils/Common.style";
-import { useSetActualPage } from "../../hooks/useSetActualPage";
-import { ISetActualPage } from "../../utils/ISetActualPage";
+import { CartDetailsContext as CartContext } from "../../context/CartContext";
 
-interface ICart {
-  setShowCart: React.Dispatch<SetStateAction<boolean>>;
-  isVisible: boolean;
-}
-
-const Cart: React.FC<ICart> = ({ isVisible, setShowCart }) => {
+const Cart: React.FC = () => {
   const cartRef = useRef<HTMLDivElement>(null);
+  const { setShowCart } = useContext(CartContext);
 
   return (
-    <CartContainer isVisible={isVisible} ref={cartRef}>
+    <CartContainer ref={cartRef}>
       <ClosButton
         onClick={() => {
           setShowCart(false);

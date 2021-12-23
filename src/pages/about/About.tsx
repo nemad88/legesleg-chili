@@ -1,13 +1,12 @@
-import { useRef } from "react";
+import { useRef, useContext } from "react";
 import { AboutContainer } from "./About.style";
 import { SectionTitle } from "../../utils/Common.style";
 import { useSetActualPage } from "../../hooks/useSetActualPage";
-import { ISetActualPage } from "../../utils/ISetActualPage";
+import { Context as ActualPageContext } from "../../context/ActualPageContext";
 
-interface IAbout extends ISetActualPage {}
-
-const About: React.FC<IAbout> = ({ setActualPage }) => {
+const About: React.FC = () => {
   const aboutRef = useRef<HTMLDivElement>(null);
+  const { setActualPage } = useContext(ActualPageContext);
 
   useSetActualPage(aboutRef, "about", setActualPage);
 

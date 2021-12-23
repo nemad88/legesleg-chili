@@ -1,29 +1,16 @@
-import { useRef, useEffect } from "react";
+import { useRef, useContext } from "react";
 import { ProductsContainer, CardsContainer } from "./Products.style";
 import { SectionTitle } from "../../utils/Common.style";
 import { useSetActualPage } from "../../hooks/useSetActualPage";
-import { ISetActualPage } from "../../utils/ISetActualPage";
+import { Context as ActualPageContext } from "../../context/ActualPageContext";
+
 import Card from "../../components/Card/Card";
-import csajozosJPG from "../../assets/csajozos.jpg";
-import csilikeJPG from "../../assets/csilike.jpg";
-import edesemJPG from "../../assets/edesem.jpg";
-import nemCsiplekJPG from "../../assets/nem_csiplek.jpg";
-import sargaIrigysegJPG from "../../assets/sarga_irigyseg.jpg";
+
 import productsList from "../../data/products.json";
 
-interface IProducts extends ISetActualPage {}
-
-interface IProduct {
-  order: "normal" | "reverse";
-}
-
-const Products: React.FC<IProducts> = ({ setActualPage }) => {
+const Products: React.FC = () => {
   const productsRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    console.log(productsList);
-  }, []);
-
+  const { setActualPage } = useContext(ActualPageContext);
   useSetActualPage(productsRef, "products", setActualPage);
 
   return (
@@ -31,14 +18,16 @@ const Products: React.FC<IProducts> = ({ setActualPage }) => {
       <SectionTitle>Prémium kézműves termékeink</SectionTitle>
       <CardsContainer>
         {productsList.products.map((product: any) => {
-          const { order, imgUrl, name, id, details } = product;
+          const { order, imgUrl, name, id, details, price } = product;
           return (
             <Card
+              id={id}
               order={order}
               imageUrl={imgUrl}
               productName={name}
               key={id}
               details={details}
+              price={price}
             />
           );
         })}

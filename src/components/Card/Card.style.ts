@@ -56,4 +56,41 @@ export const Details = styled.div`
   text-align: justify;
   letter-spacing: 0.125em;
   color: #000000;
+  margin-bottom: 32px;
+`;
+
+export const Price = styled.div`
+  font-style: italic;
+  font-weight: bold;
+  margin-bottom: 32px;
+`;
+
+export const CartLabel = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 16px;
+  font-weight: 900;
+  font-size: 18px;
+  letter-spacing: 0.125em;
+  min-width: 320px;
+`;
+
+export const CartController = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
+export const CartButton = styled.button`
+  all: unset;
+  padding: 10px;
+  background: #273557;
+  border-radius: 8px;
+  font-style: normal;
+  font-weight: 900;
+  font-size: 18px;
+  letter-spacing: 0.125em;
+  color: #ffffff;
+  cursor: pointer;
 `;

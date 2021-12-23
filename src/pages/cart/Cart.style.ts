@@ -1,17 +1,8 @@
 import styled from "styled-components";
 
-interface ICartContainer {
-  isVisible: boolean;
-}
-
-export const CartContainer = styled.div<ICartContainer>`
+export const CartContainer = styled.div`
   position: relative;
-  ${({ isVisible }) => {
-    if (isVisible) {
-      return "display: flex;";
-    }
-    return "display: none;";
-  }}
+  display: flex;
   background-color: #000000;
   width: 300px;
   height: 300px;

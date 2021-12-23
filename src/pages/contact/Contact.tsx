@@ -1,14 +1,12 @@
-import { useRef } from "react";
+import { useRef, useContext } from "react";
 import { ProductsContainer } from "./Contact.style";
 import { SectionTitle } from "../../utils/Common.style";
 import { useSetActualPage } from "../../hooks/useSetActualPage";
-import { ISetActualPage } from "../../utils/ISetActualPage";
+import { Context as ActualPageContext } from "../../context/ActualPageContext";
 
-interface IContact extends ISetActualPage {}
-
-const Products: React.FC<IContact> = ({ setActualPage }) => {
+const Products: React.FC = () => {
   const productsRef = useRef<HTMLDivElement>(null);
-
+  const { setActualPage } = useContext(ActualPageContext);
   useSetActualPage(productsRef, "contact", setActualPage);
 
   return (

@@ -1,17 +1,31 @@
-import { SetStateAction } from "react";
-import { NavBarContainer, ScrolledNavBarContainer } from "./NavBar.style";
-import { IActualPage } from "../../utils/ISetActualPage";
+import { useContext, useState } from "react";
+import {
+  NavBarContainer,
+  ScrolledNavBarContainer,
+  InCart,
+} from "./NavBar.style";
+import { CartDetailsContext } from "../../context/CartContext";
+import { Context as ActualPageContext } from "../../context/ActualPageContext";
+import { ICartItem } from "../../interfaces/ICartItem";
 import upSVG from "../../assets/up.svg";
 import downSVG from "../../assets/down.svg";
 
-interface INavbar extends IActualPage {
-  setShowCart: React.Dispatch<SetStateAction<boolean>>;
-}
-
-const NavBar: React.FC<INavbar> = ({ actualPage, setShowCart }) => {
+const NavBar: React.FC = () => {
   const scrollTo = (id: string) => {
     const element = document.querySelector(`#${id}`);
     if (element) element.scrollIntoView({ behavior: "smooth" });
+  };
+
+  const { cart, setShowCart } = useContext(CartDetailsContext);
+  const { actualPage } = useContext(ActualPageContext);
+
+  const getItemsQuantityInCart = () => {
+    const cartAsArray = Object.values(cart) as ICartItem[];
+    let sum = 0;
+    cartAsArray.forEach((cartItem) => {
+      sum = sum + cartItem.amount;
+    });
+    return sum;
   };
 
   const getNormalNavbar = () => {
@@ -26,7 +40,7 @@ const NavBar: React.FC<INavbar> = ({ actualPage, setShowCart }) => {
             setShowCart(true);
           }}
         >
-          Kosár
+          Kosár ({getItemsQuantityInCart()})
         </li>
       </NavBarContainer>
     );
@@ -41,39 +55,36 @@ const NavBar: React.FC<INavbar> = ({ actualPage, setShowCart }) => {
 
   const getScrolledNav = () => {
     return (
-      <ScrolledNavBarContainer>
-        <img
-          src={upSVG}
+      <>
+        <InCart
           onClick={() => {
-            if (getScrollToLink().prev) {
-              scrollTo(getScrollToLink().prev);
-            }
-          }}
-          alt=""
-        />
-        <img
-          src={downSVG}
-          onClick={() => {
-            if (getScrollToLink().next) {
-              scrollTo(getScrollToLink().next);
-            }
-          }}
-          alt=""
-        />
-
-        {/* <li onClick={() => scrollTo("hero")}>Kezdőoldal</li>
-        <li onClick={() => scrollTo("products")}>Termékeink</li>
-        <li onClick={() => scrollTo("about")}>Rólunk</li>
-        <li onClick={() => scrollTo("contact")}>Kapcsolat</li>
-        <li
-          onClick={() => {
-            document.body.style.overflow = "hidden";
             setShowCart(true);
           }}
         >
-          Kosár
-        </li> */}
-      </ScrolledNavBarContainer>
+          {" "}
+          Kosár ({getItemsQuantityInCart()})
+        </InCart>
+        <ScrolledNavBarContainer>
+          <img
+            src={upSVG}
+            onClick={() => {
+              if (getScrollToLink().prev) {
+                scrollTo(getScrollToLink().prev);
+              }
+            }}
+            alt=""
+          />
+          <img
+            src={downSVG}
+            onClick={() => {
+              if (getScrollToLink().next) {
+                scrollTo(getScrollToLink().next);
+              }
+            }}
+            alt=""
+          />
+        </ScrolledNavBarContainer>
+      </>
     );
   };
 

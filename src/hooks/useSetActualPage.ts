@@ -16,7 +16,6 @@ export const useSetActualPage = (
     };
 
     const callbackFunction = (entries: IntersectionObserverEntry[]) => {
-      console.log(entries[0]);
       if (entries[0].isIntersecting) {
         setActualPage(actualPageId);
       } else {

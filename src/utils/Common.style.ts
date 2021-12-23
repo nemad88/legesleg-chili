@@ -17,6 +17,7 @@ export const SectionTitle = styled.h2`
 export const BackDrop = styled.div`
   width: 100vw;
   height: 100vh;
+  background-color: rgba(0, 0, 0, 0.8);
   backdrop-filter: blur(2px);
   position: fixed;
   left: 0px;

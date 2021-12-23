@@ -31,6 +31,7 @@ function App() {
           <BackDrop
             onClick={() => {
               setShowCart(false);
+              document.body.style.overflow = "auto";
             }}
           />
           <Cart />

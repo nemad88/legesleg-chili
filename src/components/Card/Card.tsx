@@ -32,9 +32,27 @@ const Card: React.FC<ICard> = ({
 
   const handleAmountChange = (sign: "-" | "+") => {
     if (sign === "+") {
-      setCart({ ...cart, [id]: { amount: cart[id]?.amount + 1 } });
+      setCart({
+        ...cart,
+        [id]: {
+          id: id,
+          amount: cart[id]?.amount + 1,
+          itemName: productName,
+          itemPrice: price,
+          sum: price * (cart[id]?.amount + 1),
+        },
+      });
     } else {
-      setCart({ ...cart, [id]: { amount: cart[id]?.amount - 1 } });
+      setCart({
+        ...cart,
+        [id]: {
+          id: id,
+          amount: cart[id]?.amount - 1,
+          itemName: productName,
+          itemPrice: price,
+          sum: price * (cart[id]?.amount - 1),
+        },
+      });
     }
   };
 
@@ -56,7 +74,16 @@ const Card: React.FC<ICard> = ({
             <CartButton
               onClick={() => {
                 setCart((cart) => {
-                  return { ...cart, [id]: { amount: 1 } };
+                  return {
+                    ...cart,
+                    [id]: {
+                      id: id,
+                      amount: 1,
+                      itemName: productName,
+                      itemPrice: price,
+                      sum: price,
+                    },
+                  };
                 });
               }}
             >

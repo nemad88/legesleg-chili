@@ -31,12 +31,6 @@ const Products: React.FC = () => {
             />
           );
         })}
-
-        {/* <Card order="normal" imageUrl={csajozosJPG} />
-        <Card order="reverse" imageUrl={csilikeJPG} />
-        <Card order="normal" imageUrl={edesemJPG} />
-        <Card order="reverse" imageUrl={nemCsiplekJPG} />
-        <Card order="normal" imageUrl={sargaIrigysegJPG} /> */}
       </CardsContainer>
     </ProductsContainer>
   );

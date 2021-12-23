@@ -11,7 +11,7 @@ export const HeroWrapper = styled.div`
   background-position: center;
   background-size: cover;
 
-  color: wheat;
+  color: #ffffff;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -39,7 +39,7 @@ export const HeroText = styled.div`
   }
 
   padding: 16px;
-  border-left: 5px solid wheat;
+  border-left: 5px solid #ffffff;
 
   @media only screen and (max-width: 800px) {
     max-width: 384px;

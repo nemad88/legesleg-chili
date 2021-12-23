@@ -9,7 +9,7 @@ export const NavBarContainer = styled.ul`
   top: 0;
   right: 0;
   display: flex;
-  color: wheat;
+  color: #ffffff;
   list-style: none;
   text-transform: uppercase;
   justify-content: flex-end;
@@ -42,10 +42,11 @@ export const ScrolledNavBarContainer = styled.ul`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  color: wheat;
+  color: #ffffff;
   z-index: 99;
   img {
     margin: 12px;
+    cursor: pointer;
   }
 `;
 
@@ -53,7 +54,7 @@ export const InCart = styled.div`
   position: fixed;
   top: 0px;
   right: 0px;
-  color: wheat;
+  color: #ffffff;
   cursor: pointer;
   text-transform: uppercase;
   font-weight: bold;

@@ -1,16 +1,21 @@
-import { useContext, useState, useEffect } from "react";
-import { CartDetailsContext as CartContext } from "../../context/CartContext";
+import React, { useContext, useState } from "react";
 
+import { CartDetailsContext as CartContext } from "../../context/CartContext";
+import downSVG from "../../assets/down.svg";
 import {
   CardWrapper,
   ProductName,
   Details,
-  Price,
-  CartLabel,
+  InCartText,
+  PriceWrapper,
+  PriceLabel,
+  PriceOptions,
+  PriceOption,
   CartController,
   CartButton,
 } from "./Card.style";
-
+import CardImage from "../CardImage/CardImage";
+type TypeVariation = { weight: number; price: number };
 interface ICard {
   order: "normal" | "reverse";
   imageUrl: string;
@@ -18,6 +23,7 @@ interface ICard {
   details: string;
   price: number;
   id: string;
+  variations: TypeVariation[];
 }
 
 const Card: React.FC<ICard> = ({
@@ -27,70 +33,68 @@ const Card: React.FC<ICard> = ({
   details,
   price,
   id,
+  variations,
 }) => {
   const { cart, setCart } = useContext(CartContext);
+  const [dropdownVisible, setDropdownVisible] = useState(false);
+  const [selectedVariation, setsSlectedVariation] = useState<TypeVariation>(
+    variations[0]
+  );
 
   const handleAmountChange = (sign: "-" | "+") => {
     if (sign === "+") {
-      setCart({
-        ...cart,
-        [id]: {
-          id: id,
-          amount: cart[id]?.amount + 1,
-          itemName: productName,
-          itemPrice: price,
-          sum: price * (cart[id]?.amount + 1),
-        },
-      });
-    } else {
-      setCart({
-        ...cart,
-        [id]: {
-          id: id,
-          amount: cart[id]?.amount - 1,
-          itemName: productName,
-          itemPrice: price,
-          sum: price * (cart[id]?.amount - 1),
-        },
+      console.log({
+        productName,
+        id: `${id}-${selectedVariation.weight}`,
       });
     }
   };
 
+  const handleOnClickDropdown = (target: React.MouseEvent<HTMLDivElement>) => {
+    setDropdownVisible((visible) => !visible);
+  };
+
   return (
     <CardWrapper elementOrder={order} imageUrl={imageUrl}>
-      <div className="card-picture" />
+      <CardImage />
       <div className="card-detail">
         <ProductName>{productName}</ProductName>
         <Details>{details}</Details>
-        <Price>{price} Ft</Price>
         <CartController>
-          {cart[id]?.amount > 0 ? (
-            <>
-              <CartButton onClick={() => handleAmountChange("-")}>-</CartButton>
-              <CartLabel>{cart[id].amount} db termék a kosárban</CartLabel>
-              <CartButton onClick={() => handleAmountChange("+")}>+</CartButton>
-            </>
-          ) : (
-            <CartButton
-              onClick={() => {
-                setCart((cart) => {
-                  return {
-                    ...cart,
-                    [id]: {
-                      id: id,
-                      amount: 1,
-                      itemName: productName,
-                      itemPrice: price,
-                      sum: price,
-                    },
-                  };
-                });
-              }}
-            >
-              Kosárba teszem
-            </CartButton>
-          )}
+          <PriceWrapper>
+            <PriceLabel onClick={handleOnClickDropdown}>
+              {selectedVariation.weight}g - {selectedVariation.price} Ft
+              <img src={downSVG} alt="" />
+            </PriceLabel>
+            {dropdownVisible && (
+              <PriceOptions visible={dropdownVisible}>
+                {variations.map((variation) => (
+                  <PriceOption
+                    key={variation.weight}
+                    onClick={() => {
+                      setsSlectedVariation(variation);
+                      setDropdownVisible(false);
+                    }}
+                  >
+                    {variation.weight}g - {variation.price} Ft
+                  </PriceOption>
+                ))}
+              </PriceOptions>
+            )}
+          </PriceWrapper>
+          <CartButton
+            onClick={() => {
+              handleAmountChange("+");
+            }}
+          >
+            Kosárba teszem
+          </CartButton>
         </CartController>
+        {cart[id]?.amount ? (
+          <InCartText>{cart[id]?.amount}db a kosárban</InCartText>
+        ) : (
+          <InCartText>Tegyél a kosárba</InCartText>
+        )}
       </div>
     </CardWrapper>
   );

@@ -18,7 +18,8 @@ const Products: React.FC = () => {
       <SectionTitle>Prémium kézműves termékeink</SectionTitle>
       <CardsContainer>
         {productsList.products.map((product: any) => {
-          const { order, imgUrl, name, id, details, price } = product;
+          const { order, imgUrl, name, id, details, price, variations } =
+            product;
           return (
             <Card
               id={id}
@@ -28,6 +29,7 @@ const Products: React.FC = () => {
               key={id}
               details={details}
               price={price}
+              variations={variations}
             />
           );
         })}

@@ -16,12 +16,12 @@ export const CardWrapper = styled.div<ICardWrapper>`
     align-items: center;
     flex-direction: column;
     flex: 1 1;
-
+    background: linear-gradient(64.29deg, #0b0c0c -8.14%, #031930 74.55%);
     ${({ elementOrder }) => {
       if (elementOrder === "reverse") {
-        return "order: 1; background: linear-gradient(68.69deg, #E0E0E0 3.17%, rgba(255, 255, 255, .1) 86%);";
+        return "order: 1;";
       } else {
-        return "order: 2; background: linear-gradient(242.97deg, #E0E0E0 11.01%, rgba(255, 255, 255, .1) 90.29%);";
+        return "order: 2;";
       }
     }}
     padding: 36px;
@@ -51,34 +51,93 @@ export const ProductName = styled.div`
 `;
 
 export const Details = styled.div`
+  margin-bottom: 64px;
+  font-family: Montserrat;
   font-style: normal;
   font-weight: 300;
-  font-size: 18px;
+  font-size: 16px;
+  line-height: 22px;
+  display: flex;
+  align-items: center;
   text-align: justify;
   letter-spacing: 0.125em;
-  color: #000000;
-  margin-bottom: 32px;
+  color: #f7f7f7;
 `;
 
-export const Price = styled.div`
-  font-style: italic;
-  font-weight: bold;
-  margin-bottom: 32px;
+export const InCartText = styled.div`
+  font-style: normal;
+  font-weight: 700;
+  font-size: 12px;
+  letter-spacing: 0.125em;
+  color: #ffffff;
+  margin-top: 72px;
 `;
 
-export const CartLabel = styled.div`
+export const PriceWrapper = styled.div`
+  padding: 10px;
+  cursor: pointer;
+  letter-spacing: 0.125em;
+  border-radius: 8px;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 900;
+  background: #ffffff;
+  position: relative;
+  width: 200px;
+`;
+
+export const PriceLabel = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 16px;
-  font-weight: 900;
-  font-size: 18px;
-  letter-spacing: 0.125em;
-  min-width: 320px;
+  gap: 16px;
+
+  img {
+    width: 12px;
+    height: 12px;
+  }
+`;
+
+interface IPriceOptions {
+  visible?: boolean;
+}
+
+export const PriceOptions = styled.div<IPriceOptions>`
+  /* display: ${({ visible }) => (visible ? "flex" : "none")}; */
+  display: flex;
+  /* background: #ffffff; */
+  background: red;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  left: 0;
+  top: 44px;
+  font-style: italic;
+  font-weight: bold;
+  font-size: 14px;
+  margin-bottom: 32px;
+  width: 100%;
+  border-radius: 8px;
+  padding: 4px;
+  gap: 4px;
+`;
+
+export const PriceOption = styled.div`
+  font-style: italic;
+  font-weight: bold;
+  padding: 8px;
+  width: 100%;
+  border-radius: 8px;
+
+  &:hover {
+    background: gray;
+  }
 `;
 
 export const CartController = styled.div`
   display: flex;
+  gap: 16px;
   justify-content: center;
   align-items: center;
 `;
@@ -90,7 +149,7 @@ export const CartButton = styled.button`
   border-radius: 8px;
   font-style: normal;
   font-weight: 900;
-  font-size: 18px;
+  font-size: 16px;
   letter-spacing: 0.125em;
   color: #ffffff;
   cursor: pointer;

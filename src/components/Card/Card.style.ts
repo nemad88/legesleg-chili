@@ -98,23 +98,15 @@ export const PriceLabel = styled.div`
   }
 `;
 
-interface IPriceOptions {
-  visible?: boolean;
-}
-
-export const PriceOptions = styled.div<IPriceOptions>`
-  /* display: ${({ visible }) => (visible ? "flex" : "none")}; */
+export const PriceOptions = styled.div`
   display: flex;
-  /* background: #ffffff; */
-  background: red;
+  background: #ffffff;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   position: absolute;
   left: 0;
   top: 44px;
-  font-style: italic;
-  font-weight: bold;
   font-size: 14px;
   margin-bottom: 32px;
   width: 100%;
@@ -124,8 +116,7 @@ export const PriceOptions = styled.div<IPriceOptions>`
 `;
 
 export const PriceOption = styled.div`
-  font-style: italic;
-  font-weight: bold;
+  /* font-weight: bold; */
   padding: 8px;
   width: 100%;
   border-radius: 8px;

@@ -26,7 +26,7 @@ const Cart: React.FC = () => {
           Object.values(cart).map((cartItem) => {
             return (
               <Item key={cartItem.id}>
-                <div>Termék neve: {cartItem.itemName}</div>
+                <div>Termék neve: {cartItem.productName}</div>
                 <div>Ár: {cartItem.itemPrice}</div>
                 <div>Mennyiség: {cartItem.amount}</div>
                 <div>Össz: {cartItem.sum}</div>

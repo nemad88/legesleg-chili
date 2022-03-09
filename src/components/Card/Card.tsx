@@ -1,5 +1,5 @@
 import React, { useContext, useState } from "react";
-
+import useOnClickOutside from "../../hooks/useOnClickOutside";
 import { CartDetailsContext as CartContext } from "../../context/CartContext";
 import downSVG from "../../assets/down.svg";
 import {
@@ -14,14 +14,12 @@ import {
   CartController,
   CartButton,
 } from "./Card.style";
-import CardImage from "../CardImage/CardImage";
 type TypeVariation = { weight: number; price: number };
 interface ICard {
   order: "normal" | "reverse";
   imageUrl: string;
   productName: string;
   details: string;
-  price: number;
   id: string;
   variations: TypeVariation[];
 }
@@ -31,7 +29,6 @@ const Card: React.FC<ICard> = ({
   imageUrl,
   productName,
   details,
-  price,
   id,
   variations,
 }) => {
@@ -40,12 +37,33 @@ const Card: React.FC<ICard> = ({
   const [selectedVariation, setsSlectedVariation] = useState<TypeVariation>(
     variations[0]
   );
+  const refClickOutside = useOnClickOutside(() => setDropdownVisible(false));
 
   const handleAmountChange = (sign: "-" | "+") => {
+    const cartId = `${id}-${selectedVariation.weight}`;
+
+    const currentItem = {
+      productName,
+      id: cartId,
+      weight: selectedVariation.weight,
+      itemPrice: selectedVariation.price,
+    };
+
+    console.log("currentItem", currentItem);
+
     if (sign === "+") {
-      console.log({
-        productName,
-        id: `${id}-${selectedVariation.weight}`,
+      setCart((cart) => {
+        return {
+          ...cart,
+          [cartId]: {
+            ...currentItem,
+            amount: cart[cartId]?.amount ? cart[cartId].amount + 1 : 1,
+            sum: cart[cartId]?.amount
+              ? currentItem.itemPrice * cart[cartId].amount +
+                currentItem.itemPrice
+              : currentItem.itemPrice,
+          },
+        };
       });
     }
   };
@@ -56,24 +74,23 @@ const Card: React.FC<ICard> = ({
 
   return (
     <CardWrapper elementOrder={order} imageUrl={imageUrl}>
-      <CardImage />
+      <div className="card-picture" />
       <div className="card-detail">
         <ProductName>{productName}</ProductName>
         <Details>{details}</Details>
         <CartController>
-          <PriceWrapper>
-            <PriceLabel onClick={handleOnClickDropdown}>
+          <PriceWrapper ref={refClickOutside} onClick={handleOnClickDropdown}>
+            <PriceLabel>
               {selectedVariation.weight}g - {selectedVariation.price} Ft
               <img src={downSVG} alt="" />
             </PriceLabel>
             {dropdownVisible && (
-              <PriceOptions visible={dropdownVisible}>
+              <PriceOptions>
                 {variations.map((variation) => (
                   <PriceOption
                     key={variation.weight}
                     onClick={() => {
                       setsSlectedVariation(variation);
-                      setDropdownVisible(false);
                     }}
                   >
                     {variation.weight}g - {variation.price} Ft

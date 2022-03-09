@@ -1,5 +1,4 @@
-import { useState, useEffect, useContext } from "react";
-import "./App.css";
+import { useEffect, useContext } from "react";
 import NavBar from "./components/NavBar/NavBar";
 import Hero from "./pages/hero/Hero";
 import Products from "./pages/products/Products";

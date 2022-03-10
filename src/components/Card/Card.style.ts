@@ -8,9 +8,9 @@ interface ICardWrapper {
 export const CardWrapper = styled.div<ICardWrapper>`
   display: grid;
   width: 100%;
-  height: 520px;
+
   grid-template-columns: 50% 50%;
-  grid-template-rows: 520px;
+  grid-template-rows: 540px;
 
   .card-detail {
     display: flex;
@@ -38,6 +38,7 @@ export const CardWrapper = styled.div<ICardWrapper>`
       return "order: 1;";
     }}
     overflow: hidden;
+
     img {
       width: 100%;
       height: 100%;

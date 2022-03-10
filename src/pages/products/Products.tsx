@@ -1,17 +1,14 @@
-import { useRef, useContext } from "react";
+import { useRef } from "react";
 import { ProductsContainer, CardsContainer } from "./Products.style";
 import { SectionTitle } from "../../utils/Common.style";
 import { useSetActualPage } from "../../hooks/useSetActualPage";
-import { Context as ActualPageContext } from "../../context/ActualPageContext";
-
 import Card from "../../components/Card/Card";
 
 import productsList from "../../data/products.json";
 
 const Products: React.FC = () => {
   const productsRef = useRef<HTMLDivElement>(null);
-  const { setActualPage } = useContext(ActualPageContext);
-  useSetActualPage(productsRef, "products", setActualPage);
+  useSetActualPage(productsRef, "products");
 
   return (
     <ProductsContainer ref={productsRef} id="products">

@@ -1,12 +1,12 @@
-import { useEffect, MutableRefObject, SetStateAction } from "react";
+import { useEffect, MutableRefObject, useContext } from "react";
+import { Context as ActualPageContext } from "../context/ActualPageContext";
 
 export const useSetActualPage = (
   elementRef: MutableRefObject<HTMLDivElement | null>,
-  actualPageId: "hero" | "products" | "about" | "contact",
-  setActualPage: React.Dispatch<
-    SetStateAction<"hero" | "products" | "about" | "contact">
-  >
+  actualPageId: "hero" | "products" | "about" | "contact"
 ) => {
+  const { setActualPage } = useContext(ActualPageContext);
+
   useEffect(() => {
     const { current } = elementRef;
 

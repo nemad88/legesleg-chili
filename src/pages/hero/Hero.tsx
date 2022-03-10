@@ -1,14 +1,11 @@
-import { useRef, useContext } from "react";
+import { useRef } from "react";
 import { HeroWrapper, HeroText } from "./Hero.style";
 import { useSetActualPage } from "../../hooks/useSetActualPage";
-import { Context as ActualPageContext } from "../../context/ActualPageContext";
 
 const Hero: React.FC = () => {
   const heroRef = useRef<HTMLDivElement>(null);
 
-  const { setActualPage } = useContext(ActualPageContext);
-
-  useSetActualPage(heroRef, "hero", setActualPage);
+  useSetActualPage(heroRef, "hero");
 
   return (
     <HeroWrapper ref={heroRef} id="hero">

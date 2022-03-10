@@ -1,14 +1,11 @@
-import { useRef, useContext } from "react";
+import { useRef } from "react";
 import { AboutContainer } from "./About.style";
 import { SectionTitle } from "../../utils/Common.style";
 import { useSetActualPage } from "../../hooks/useSetActualPage";
-import { Context as ActualPageContext } from "../../context/ActualPageContext";
 
 const About: React.FC = () => {
   const aboutRef = useRef<HTMLDivElement>(null);
-  const { setActualPage } = useContext(ActualPageContext);
-
-  useSetActualPage(aboutRef, "about", setActualPage);
+  useSetActualPage(aboutRef, "about");
 
   return (
     <AboutContainer ref={aboutRef} id="about">

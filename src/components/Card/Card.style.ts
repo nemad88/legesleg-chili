@@ -10,6 +10,7 @@ export const CardWrapper = styled.div<ICardWrapper>`
   width: 100%;
   height: 520px;
   grid-template-columns: 50% 50%;
+  grid-template-rows: 520px;
 
   .card-detail {
     display: flex;
@@ -38,10 +39,10 @@ export const CardWrapper = styled.div<ICardWrapper>`
     }}
     overflow: hidden;
     img {
-      position: absolute;
-      top: 50%;
-      right: 50%;
-      transform: translate(50%, -50%) scale(80%);
+      width: 100%;
+      height: 100%;
+      object-position: center;
+      object-fit: cover;
     }
   }
 `;

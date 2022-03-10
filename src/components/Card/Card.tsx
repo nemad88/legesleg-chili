@@ -38,10 +38,9 @@ const Card: React.FC<ICard> = ({
     variations[0]
   );
   const refClickOutside = useOnClickOutside(() => setDropdownVisible(false));
+  const cartId = `${id}-${selectedVariation.weight}`;
 
   const handleAmountChange = (sign: "-" | "+") => {
-    const cartId = `${id}-${selectedVariation.weight}`;
-
     const currentItem = {
       productName,
       id: cartId,
@@ -74,7 +73,9 @@ const Card: React.FC<ICard> = ({
 
   return (
     <CardWrapper elementOrder={order} imageUrl={imageUrl}>
-      <div className="card-picture" />
+      <div className="card-picture">
+        <img src={imageUrl} />
+      </div>
       <div className="card-detail">
         <ProductName>{productName}</ProductName>
         <Details>{details}</Details>
@@ -107,10 +108,10 @@ const Card: React.FC<ICard> = ({
             Kosárba teszem
           </CartButton>
         </CartController>
-        {cart[id]?.amount ? (
-          <InCartText>{cart[id]?.amount}db a kosárban</InCartText>
+        {cart[cartId]?.amount ? (
+          <InCartText>{cart[cartId]?.amount}db a kosárban</InCartText>
         ) : (
-          <InCartText>Tegyél a kosárba</InCartText>
+          <InCartText>{"  "}</InCartText>
         )}
       </div>
     </CardWrapper>

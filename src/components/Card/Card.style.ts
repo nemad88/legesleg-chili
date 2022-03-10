@@ -6,13 +6,14 @@ interface ICardWrapper {
 }
 
 export const CardWrapper = styled.div<ICardWrapper>`
-  display: flex;
+  display: grid;
   width: 100%;
   height: 520px;
+  grid-template-columns: 50% 50%;
 
   .card-detail {
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
     flex-direction: column;
     flex: 1 1;
@@ -29,14 +30,19 @@ export const CardWrapper = styled.div<ICardWrapper>`
 
   .card-picture {
     content: "";
+    position: relative;
     flex: 1 1;
-    ${({ imageUrl }) =>
-      `background-image: url(${imageUrl}); background-size: cover; background-position: center;`}
     ${({ elementOrder }) => {
       if (elementOrder === "reverse") return "order: 2;";
       return "order: 1;";
     }}
-    padding: 36px;
+    overflow: hidden;
+    img {
+      position: absolute;
+      top: 50%;
+      right: 50%;
+      transform: translate(50%, -50%) scale(80%);
+    }
   }
 `;
 
@@ -47,11 +53,11 @@ export const ProductName = styled.div`
   letter-spacing: 0.125em;
   color: #d90b0b;
   text-shadow: 0px 1px 2px rgba(0, 0, 0, 0.25);
-  margin-bottom: 48px;
+  margin-bottom: 52px;
 `;
 
 export const Details = styled.div`
-  margin-bottom: 64px;
+  margin-bottom: 40px;
   font-family: Montserrat;
   font-style: normal;
   font-weight: 300;
@@ -71,6 +77,7 @@ export const InCartText = styled.div`
   letter-spacing: 0.125em;
   color: #ffffff;
   margin-top: 72px;
+  height: 16px;
 `;
 
 export const PriceWrapper = styled.div`

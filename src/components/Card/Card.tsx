@@ -83,7 +83,10 @@ const Card: React.FC<ICard> = ({
           <PriceWrapper ref={refClickOutside} onClick={handleOnClickDropdown}>
             <PriceLabel>
               {selectedVariation.weight}g - {selectedVariation.price} Ft
-              <img src={downSVG} alt="" />
+              <img
+                src={"https://legeslegchili.hu/assets/down.svg"}
+                alt="down"
+              />
             </PriceLabel>
             {dropdownVisible && (
               <PriceOptions>
@@ -111,7 +114,7 @@ const Card: React.FC<ICard> = ({
         {cart[cartId]?.amount ? (
           <InCartText>{cart[cartId]?.amount}db a kosárban</InCartText>
         ) : (
-          <InCartText>{"  "}</InCartText>
+          <InCartText>{"Nincs a kosárban"}</InCartText>
         )}
       </div>
     </CardWrapper>

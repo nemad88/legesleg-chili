@@ -5,6 +5,7 @@ import Products from "./pages/products/Products";
 import About from "./pages/about/About";
 import Contact from "./pages/contact/Contact";
 import Cart from "./pages/cart/Cart";
+import Footer from "./pages/footer/Footer";
 import { BackDrop } from "./utils/Common.style";
 import FullPageImage from "./components/FullPageImage/FullPageImage";
 
@@ -25,6 +26,7 @@ function App() {
       <FullPageImage />
       <About />
       <Contact />
+      <Footer />
       {showCart ? (
         <>
           <BackDrop

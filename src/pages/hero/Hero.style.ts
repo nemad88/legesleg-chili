@@ -1,11 +1,10 @@
 import styled from "styled-components";
-import backgroundImage from "../../assets/paprikak.jpeg";
 
 export const HeroWrapper = styled.div`
   width: 100vw;
   height: 100vh;
 
-  background-image: url(${backgroundImage});
+  background-image: url(${"https://legeslegchili.hu/assets/hero.jpeg"});
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-position: center;

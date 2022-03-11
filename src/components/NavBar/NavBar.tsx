@@ -66,22 +66,22 @@ const NavBar: React.FC = () => {
         </InCart>
         <ScrolledNavBarContainer>
           <img
-            src={upSVG}
+            src={"https://legeslegchili.hu/assets/up.svg"}
             onClick={() => {
               if (getScrollToLink().prev) {
                 scrollTo(getScrollToLink().prev);
               }
             }}
-            alt=""
+            alt="up"
           />
           <img
-            src={downSVG}
+            src={"https://legeslegchili.hu/assets/down.svg"}
             onClick={() => {
               if (getScrollToLink().next) {
                 scrollTo(getScrollToLink().next);
               }
             }}
-            alt=""
+            alt="down"
           />
         </ScrolledNavBarContainer>
       </>

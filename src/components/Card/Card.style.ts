@@ -57,6 +57,8 @@ export const CardWrapper = styled.div<ICardWrapper>`
     @media only screen and (max-width: 720px) {
       display: none;
     }
+
+    
   }
 `;
 

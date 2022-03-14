@@ -8,6 +8,9 @@ export const ProductsContainer = styled.div`
   align-items: center;
   padding-top: 80px;
   background-color: #ffffff;
+  @media only screen and (max-width: 960px) {
+    margin-bottom: 0px;
+  }
   ${fullPage}
 `;
 
@@ -17,4 +20,8 @@ export const CardsContainer = styled.div`
   margin: 80px 0px;
   max-width: 1440px;
   width: 100%;
+
+  @media only screen and (max-width: 960px) {
+    margin-bottom: 0px;
+  }
 `;

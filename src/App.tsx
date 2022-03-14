@@ -3,7 +3,7 @@ import NavBar from "./components/NavBar/NavBar";
 import Hero from "./pages/hero/Hero";
 import Products from "./pages/products/Products";
 import About from "./pages/about/About";
-import Contact from "./pages/contact/Contact";
+// import Contact from "./pages/contact/Contact";
 import Cart from "./pages/cart/Cart";
 import Footer from "./pages/footer/Footer";
 import { BackDrop } from "./utils/Common.style";

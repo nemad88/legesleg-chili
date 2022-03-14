@@ -11,4 +11,7 @@ export const StyledFullPageImage = styled.div`
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
+  @media only screen and (max-width: 960px) {
+    display: none;
+  }
 `;

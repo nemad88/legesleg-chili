@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import {
   NavBarContainer,
   ScrolledNavBarContainer,
@@ -7,8 +7,6 @@ import {
 import { CartDetailsContext } from "../../context/CartContext";
 import { Context as ActualPageContext } from "../../context/ActualPageContext";
 import { ICartItem } from "../../interfaces/ICartItem";
-import upSVG from "../../assets/up.svg";
-import downSVG from "../../assets/down.svg";
 
 const NavBar: React.FC = () => {
   const scrollTo = (id: string) => {
@@ -48,8 +46,8 @@ const NavBar: React.FC = () => {
 
   const getScrollToLink = () => {
     if (actualPage === "products") return { prev: "hero", next: "about" };
-    if (actualPage === "about") return { prev: "products", next: "contact" };
-    if (actualPage === "contact") return { prev: "about", next: "" };
+    if (actualPage === "about") return { prev: "products", next: "" };
+    // if (actualPage === "contact") return { prev: "about", next: "" };
     return { prev: "", next: "" };
   };
 

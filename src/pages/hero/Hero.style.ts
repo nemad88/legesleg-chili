@@ -12,7 +12,7 @@ export const HeroWrapper = styled.div`
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
-
+  background-attachment: scroll;
   color: #ffffff;
   display: flex;
   justify-content: center;

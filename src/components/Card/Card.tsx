@@ -1,7 +1,7 @@
 import React, { useContext, useState } from "react";
 import useOnClickOutside from "../../hooks/useOnClickOutside";
 import { CartDetailsContext as CartContext } from "../../context/CartContext";
-import downSVG from "../../assets/down.svg";
+
 import {
   CardWrapper,
   ProductName,

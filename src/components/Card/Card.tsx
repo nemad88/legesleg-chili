@@ -74,7 +74,7 @@ const Card: React.FC<ICard> = ({
   return (
     <CardWrapper elementOrder={order} imageUrl={imageUrl}>
       <div className="card-picture">
-        <img src={imageUrl} />
+        <img src={imageUrl} alt={productName} />
       </div>
       <div className="card-detail">
         <ProductName>{productName}</ProductName>

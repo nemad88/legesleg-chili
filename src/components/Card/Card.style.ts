@@ -8,9 +8,13 @@ interface ICardWrapper {
 export const CardWrapper = styled.div<ICardWrapper>`
   display: grid;
   width: 100%;
-
   grid-template-columns: 50% 50%;
   grid-template-rows: 540px;
+
+  @media only screen and (max-width: 720px) {
+    grid-template-columns: 100%;
+    margin-bottom: 16px;
+  }
 
   .card-detail {
     display: flex;
@@ -27,6 +31,10 @@ export const CardWrapper = styled.div<ICardWrapper>`
       }
     }}
     padding: 36px;
+
+    @media only screen and (max-width: 960px) {
+      padding: 24px;
+    }
   }
 
   .card-picture {
@@ -45,6 +53,10 @@ export const CardWrapper = styled.div<ICardWrapper>`
       object-position: center;
       object-fit: cover;
     }
+
+    @media only screen and (max-width: 720px) {
+      display: none;
+    }
   }
 `;
 
@@ -56,6 +68,10 @@ export const ProductName = styled.div`
   color: #d90b0b;
   text-shadow: 0px 1px 2px rgba(0, 0, 0, 0.25);
   margin-bottom: 52px;
+
+  @media only screen and (max-width: 960px) {
+    font-size: 34px;
+  }
 `;
 
 export const Details = styled.div`
@@ -70,6 +86,10 @@ export const Details = styled.div`
   text-align: justify;
   letter-spacing: 0.125em;
   color: #f7f7f7;
+
+  @media only screen and (max-width: 960px) {
+    font-size: 14px;
+  }
 `;
 
 export const InCartText = styled.div`
@@ -93,6 +113,10 @@ export const PriceWrapper = styled.div`
   background: #ffffff;
   position: relative;
   width: 200px;
+  @media only screen and (max-width: 960px) {
+    padding: 6px;
+    width: 160px;
+  }
 `;
 
 export const PriceLabel = styled.div`
@@ -104,6 +128,10 @@ export const PriceLabel = styled.div`
   img {
     width: 12px;
     height: 12px;
+  }
+
+  @media only screen and (max-width: 960px) {
+    font-size: 12px;
   }
 `;
 
@@ -125,13 +153,17 @@ export const PriceOptions = styled.div`
 `;
 
 export const PriceOption = styled.div`
-  /* font-weight: bold; */
   padding: 8px;
   width: 100%;
   border-radius: 8px;
+  text-align: center;
 
   &:hover {
     background: gray;
+  }
+
+  @media only screen and (max-width: 960px) {
+    font-size: 12px;
   }
 `;
 
@@ -153,4 +185,9 @@ export const CartButton = styled.button`
   letter-spacing: 0.125em;
   color: #ffffff;
   cursor: pointer;
+
+  @media only screen and (max-width: 960px) {
+    padding: 6px;
+    font-size: 12px;
+  }
 `;

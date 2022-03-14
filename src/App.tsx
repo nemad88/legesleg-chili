@@ -25,7 +25,7 @@ function App() {
       <Products />
       <FullPageImage />
       <About />
-      <Contact />
+      {/* <Contact /> */}
       <Footer />
       {showCart ? (
         <>

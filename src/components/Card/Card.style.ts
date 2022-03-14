@@ -70,6 +70,7 @@ export const ProductName = styled.div`
   margin-bottom: 52px;
 
   @media only screen and (max-width: 960px) {
+    text-align: center;
     font-size: 34px;
   }
 `;

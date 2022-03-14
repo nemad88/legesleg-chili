@@ -8,4 +8,7 @@ export const StyledFullPageImage = styled.div`
   background-attachment: fixed;
   background-position: center;
   background-size: cover;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
 `;
